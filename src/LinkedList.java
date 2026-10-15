@@ -44,7 +44,6 @@ public class LinkedList
     }
 
     // Regresa el último nodo (o null si la lista está vacía).
-    // Se corrigió: el original no regresaba nada cuando tail era null y no compilaba.
     public Node getTail()
     {
         return this.tail;
@@ -96,9 +95,6 @@ public class LinkedList
 
     // Insert(indice, valor): agrega un nodo en la posición "index".
     // Regresa false si el índice es inválido (menor que 0 o mayor que length).
-    // - index 0      -> equivale a prepend
-    // - index length -> equivale a append
-    // - otro caso    -> se llega al nodo anterior (index-1) y se enlaza el nuevo nodo en medio
     public boolean insert(int index, int value)
     {
         if (index < 0 || index > length) return false;
@@ -140,7 +136,6 @@ public class LinkedList
     // RemoveLast(): elimina y regresa el último nodo (null si la lista está vacía).
     // Se recorre la lista con dos punteros (temp y pre, el anterior) hasta llegar al final;
     // pre se convierte en la nueva tail y su next se pone en null.
-    // Se corrigió: el nodo removido también se desconecta y, si la lista queda vacía, head y tail van a null.
     public Node removeLast()
     {
         if (length == 0) return null;
@@ -163,9 +158,6 @@ public class LinkedList
     }
 
     // Remove(indice): elimina y regresa el nodo en la posición "index" (null si el índice es inválido).
-    // - index 0        -> equivale a removeFirst
-    // - index length-1 -> equivale a removeLast
-    // - otro caso      -> el nodo anterior salta al nodo removido, apuntando a su siguiente
     public Node remove(int index)
     {
         if (index < 0 || index >= length) return null;
@@ -258,7 +250,6 @@ public class LinkedList
     }
 
     // printList(): imprime los valores de la lista separados por espacios.
-    // Nota: si la lista tiene un ciclo, este método nunca termina.
     public void printList()
     {
         if(esCiclo())
